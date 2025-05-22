@@ -45,8 +45,3 @@ jobs:
     - name: Install dependencies
       working-directory: ./frontend
       run: npm install --production
-
-    - name: Deploy to Vercel
-      env:
-        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      run: npx vercel --prod --token $VERCEL_TOKEN --cwd ./frontend

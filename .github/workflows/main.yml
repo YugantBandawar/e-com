@@ -40,16 +40,13 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '18'
 
     - name: Install dependencies
       working-directory: ./frontend
       run: npm install --production
 
-    - name: Deploy application
-      working-directory: ./frontend
+    - name: Deploy to Vercel
       env:
-        NODE_ENV: production
-      run: |
-        echo "Deploying application..."
-        # Add your deployment commands here
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      run: npx vercel --prod --token $VERCEL_TOKEN --cwd ./frontend

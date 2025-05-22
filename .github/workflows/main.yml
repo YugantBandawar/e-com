@@ -22,12 +22,15 @@ jobs:
         node-version: '16'
 
     - name: Install dependencies
+      working-directory: ./frontend
       run: npm install
 
     - name: Run tests
+      working-directory: ./frontend
       run: npm test
 
     - name: Build application
+      working-directory: ./frontend
       run: npm run build
 
   deploy:
@@ -44,9 +47,11 @@ jobs:
         node-version: '16'
 
     - name: Install dependencies
+      working-directory: ./frontend
       run: npm install --production
 
     - name: Deploy application
+      working-directory: ./frontend
       env:
         NODE_ENV: production
       run: |
